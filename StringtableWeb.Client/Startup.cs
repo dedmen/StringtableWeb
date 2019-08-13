@@ -13,3 +13,9 @@ namespace StringtableWeb.Client {
         }
     }
 }
+
+//Debugging
+//dotnet run --configuration Debug --project .\StringtableWeb.Server\StringtableWeb.Server.csproj
+//Open in chrome
+//press SHIFT+ALT+D
+
