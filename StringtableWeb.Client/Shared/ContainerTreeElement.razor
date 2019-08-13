@@ -1,0 +1,72 @@
+﻿@using StringtableWeb.Shared.Container
+
+@switch (container)
+{
+    case Project proj:
+    {
+        <li>
+            <span class="caret">@proj.Name</span>
+            <ul class="nested">
+                @foreach (var child in proj.Children) {
+                    <ContainerTreeElement @key="@child" container="@child" />
+                }
+            </ul>
+        </li>
+    }
+    break;
+    case Package package:
+    {
+        <li>
+            <span class="caret">@package.Name</span>
+            <ul class="nested">
+            @foreach (var child in package.Children) {
+                <ContainerTreeElement @key="@child" container="@child" />
+            }
+                    </ul>
+        </li>
+    }
+    break;
+    case Container container:
+    {
+        <li>
+            <span class="caret">@container.Name</span>
+            <ul class="nested">
+            @foreach (var child in container.Children) {
+                <ContainerTreeElement @key="@child" container="@child" />
+            }
+                    </ul>
+        </li>
+    }
+    break;
+    case Key key:
+    {
+    <li>
+        <span class="caret">@key.Name</span>
+        <ul class="nested">
+        @foreach (var transl in key.Translations) {
+            <li>@transl.Key : @transl.Value</li>
+        }
+        </ul>
+    </li>
+    }
+    break;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@code {
+
+
+    [Parameter] 
+    private IContainer container { get; set; }
+
+}
